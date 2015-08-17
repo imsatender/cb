@@ -1,0 +1,22 @@
+1-> For Login:
+Description :
+	// MUST CASE : content type should be set as "application/json" for all the request for server
+	// action: will be defined from server end eg. login, register etc., can not be empty
+	// data: which will be send by app to server, can not be empty	
+	// source: will be defined from server side eg. 1->Email/Local, 2-> FB, 3-> Twitter,  4-> Google+ etc., can not be empty
+	// source_id: can be empty, in the case when user logged in via FB or other sources except local
+	// img_url: can be empty
+	// password: can be empty, in the case when user not logging via email
+	
+{
+  "action": "login",
+  "data": {
+    "source": "11001",
+    "source_id": "",
+    "email": "abc.xyz@gmail.com",
+    "img_url": "http://imageurl",
+    "password": "md5(123456)"
+  }
+}
+
+
