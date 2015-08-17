@@ -8,10 +8,11 @@ class Site extends RequestHandler {
      * @return type
      */
     public function apprequest() {
-        //echo '<pre>',print_r($_SERVER),'</pre>';die;
+        log_message('info', __METHOD__.'=>START for content_type:'.$_SERVER['CONTENT_TYPE']);
         if (stripos($_SERVER['CONTENT_TYPE'], 'application/json') === 0) {
             $_POST = json_decode(file_get_contents("php://input"), true);
         }
+        log_message('info', __METHOD__.'=>data:'.  var_export($_POST, true));
         echo json_encode($this->$_POST['action']($_POST['data']));
     }
 
@@ -28,6 +29,7 @@ class Site extends RequestHandler {
      * @param type $data
      */
     private function login($data) {
+        log_message('info', __METHOD__.'=>START ');
         //code for login
         if($this->validate($data, __FUNCTION__) === true){
             $this->load->model('User');
@@ -37,6 +39,7 @@ class Site extends RequestHandler {
     }
 
     private function register($data) {
+        log_message('info', __METHOD__.'=>START ');
         if($this->validate($data, __FUNCTION__) === true){
             
         }

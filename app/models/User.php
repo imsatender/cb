@@ -38,13 +38,16 @@ class User extends CI_Model {
     }
 
     public function userAuthenticate($data) {
+        echo 'satender';
         if ($data['source'] == APP_LOCAL) {
             $this->db->where(['username' => $data['email'], 'password' => $data['password']]);
         } else {
             $this->db->where(['username' => $data['email'], 'source_id' => $data['source_id']]);
         }
         $query = $this->db->get('user', 1);
-        return $query->result();
+        $result = $query->result();
+        echo 'satender1';
+        echo '<pre>', print_r($result),'</pre>';die;
     }
 
 }
